@@ -8,14 +8,14 @@ import { Pointer } from './Pointer'
 import { GestureGuide } from './GestureGuide'
 
 const statusText: Record<Phase, string> = {
-  offline: 'OFFLINE',
-  boot: 'INITIALISING',
-  dormant: 'STANDBY — SAY “HEY JARVIS”',
-  waking: 'ONLINE',
-  listening: 'LISTENING',
-  thinking: 'PROCESSING',
-  tooling: 'ACCESSING SYSTEMS',
-  speaking: 'RESPONDING',
+  offline: 'HORS LIGNE',
+  boot: 'INITIALISATION',
+  dormant: 'VEILLE — DITES « HEY JARVIS »',
+  waking: 'EN LIGNE',
+  listening: 'ÉCOUTE',
+  thinking: 'TRAITEMENT',
+  tooling: 'ACCÈS AUX SYSTÈMES',
+  speaking: 'RÉPONSE',
 }
 
 function Corner({ at }: { at: 'tl' | 'tr' | 'bl' | 'br' }) {
@@ -210,8 +210,8 @@ export function Hud() {
       {/* Left rail: which integrations are live */}
       {ui.chrome.systems && (
         <aside className="rail rail-left">
-          <div className="rail-title">SYSTEMS</div>
-          {connected.length === 0 && <div className="rail-item dim">none linked</div>}
+          <div className="rail-title">SYSTÈMES</div>
+          {connected.length === 0 && <div className="rail-item dim">aucun lien</div>}
           {connected.map((c) => (
             <div key={c} className="rail-item">
               <span className="tick" />
@@ -273,7 +273,7 @@ export function Hud() {
                 exit={{ opacity: 0 }}
                 transition={{ type: 'spring', stiffness: 320, damping: 32 }}
               >
-                <span className="log-who">{t.role === 'user' ? 'YOU' : 'JARVIS'}</span>
+                <span className="log-who">{t.role === 'user' ? 'VOUS' : 'JARVIS'}</span>
                 {/* Only his half decodes. What the user said was never
                     transmitted from anywhere — dressing it up as machine
                     output would be a lie about where the words came from. */}
@@ -312,11 +312,11 @@ export function Hud() {
 
       <footer className="hud-bottom">
         <span className="hint">
-          say <b>“hey jarvis”</b> · <kbd>Space</kbd> to talk · <kbd>G</kbd> hands
+          dites <b>« hey jarvis »</b> · <kbd>Espace</kbd> pour parler · <kbd>G</kbd> mains
           {voice && (
             <>
               {' · '}
-              <kbd>V</kbd> voice: {voice.replace(/\(.*?\)/g, '').trim()}
+              <kbd>V</kbd> voix : {voice.replace(/\(.*?\)/g, '').trim()}
             </>
           )}
         </span>

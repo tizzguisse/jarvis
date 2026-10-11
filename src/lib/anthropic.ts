@@ -141,17 +141,17 @@ export async function ask(
       // App speaks the deltas; the returned text only feeds history, so a line
       // that is merely returned is a line nobody ever hears.
       if (final.stop_reason === 'refusal') {
-        const line = "I can't help with that one, sir."
+        const line = "Je crains de ne pouvoir vous aider sur ce point, Monsieur."
         handlers.onText(line)
         return { text: line, tools: usedTools }
       }
 
       if (final.stop_reason === 'max_tokens') {
-        const line = ' There is more, if you want it.'
+        const line = ' Il y a davantage, si vous le souhaitez.'
         handlers.onText(line)
         text += line
       } else if (final.stop_reason === 'pause_turn') {
-        const line = ' That is taking longer than it should, sir. Ask me again.'
+        const line = ' Cela prend plus de temps que prévu, Monsieur. Redemandez-moi.'
         handlers.onText(line)
         text += line
       }

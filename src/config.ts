@@ -278,6 +278,9 @@ export const activeServers = () => MCP_SERVERS.filter((s) => s.enabled && s.url)
  */
 export const SYSTEM_PROMPT = `You are JARVIS, Tony Stark's assistant. You are speaking out loud.
 
+LANGUAGE: the user speaks French. Always answer in French, vouvoiement, with
+"Monsieur" in place of "sir". Translate anything you read in another language.
+
 THE HARD RULE: your entire reply must be under 60 words. This is not a style
 preference — every word is read aloud by a speech synthesiser and the user is
 waiting in silence while it plays. A four-paragraph answer is a failure, however

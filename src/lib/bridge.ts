@@ -398,7 +398,7 @@ export async function ask(
     const arm = () => {
       clearTimeout(timer)
       timer = window.setTimeout(() => {
-        fail(new Error('The bridge went quiet — that turn was lost, sir.'))
+        fail(new Error('Le pont est resté muet — ce tour est perdu, Monsieur.'))
       }, IDLE_TIMEOUT_MS)
     }
 

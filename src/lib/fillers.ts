@@ -19,33 +19,33 @@
 
 /** Said as soon as the first tool fires, before any answer exists. */
 const WORKING = [
-  'Working on it, sir.',
-  'Compiling.',
-  'Retrieving.',
-  'Accessing the archive.',
-  'Cross-referencing.',
-  'Running the query now.',
-  'Searching.',
-  'Under way.',
+  'Je m\'en occupe, Monsieur.',
+  'Compilation.',
+  'Récupération.',
+  'Accès aux archives.',
+  'Recoupement en cours.',
+  'Requête en cours.',
+  'Recherche.',
+  'En cours.',
 ]
 
 /** Acknowledging an order where no tool is involved. */
 const ACKNOWLEDGE = [
-  'As you wish, sir.',
-  'Very good, sir.',
-  'Certainly.',
-  'Understood.',
-  'Consider it done.',
-  'Directly, sir.',
+  'Comme il vous plaira, Monsieur.',
+  'Très bien, Monsieur.',
+  'Certainement.',
+  'Entendu.',
+  'C\'est fait.',
+  'Immédiatement, Monsieur.',
 ]
 
 /** Answering to his name, before the user has said what they want. */
 const ATTENTION = [
-  'Yes, sir?',
-  'Sir?',
-  'At your service, sir.',
-  'Standing by.',
-  'Awake, sir.',
+  'Oui, Monsieur ?',
+  'Monsieur ?',
+  'À votre service, Monsieur.',
+  'En attente.',
+  'Je suis réveillé, Monsieur.',
 ]
 
 /**
@@ -91,7 +91,7 @@ type Rule = {
   lines: string[]
 }
 
-const FOOTAGE = ['Assembling the footage.', 'Rendering the sequence.']
+const FOOTAGE = ['Assemblage des images.', 'Rendu de la séquence.']
 
 const BY_TOOL: Rule[] = [
   // Video sits above image because higgsfield and palmier both do either, so
@@ -101,50 +101,50 @@ const BY_TOOL: Rule[] = [
   {
     server: /higgsfield|openrouter-image|dalle|flux|midjourney/,
     tool: /image|photo|thumbnail|render|upscale|seedream/,
-    lines: ['Rendering.', 'Composing it now.'],
+    lines: ['Rendu en cours.', 'Composition en cours.'],
   },
   // The editors, once the two rules that read the verb have had their turn.
   { server: /palmier|heygen|runway|descript/, lines: FOOTAGE },
   {
     server: /playwright|puppeteer|browserbase|chrome/,
     tool: /\bbrowser\b|navigate/,
-    lines: ['Opening the browser.', 'Navigating.'],
+    lines: ['Ouverture du navigateur.', 'Navigation.'],
   },
   {
     server: /android|\badb\b|simulator/,
     tool: /\bdevice\b|\bapk\b|\bphone\b/,
-    lines: ['Reaching the device.', 'Connecting to your phone.'],
+    lines: ['Connexion à l\'appareil.', 'Connexion à votre téléphone.'],
   },
   {
     server: /gmail|\bmail\b/,
     tool: /gmail|\bmail\b|email|inbox/,
-    lines: ['Checking your mail.', 'Reading the inbox.'],
+    lines: ['Vérification de votre courrier.', 'Lecture de la boîte de réception.'],
   },
   // Calendar keys off "calendar" alone. "event" used to live here, which is how
   // a Mixpanel event query came out as "Checking your calendar."
   {
     tool: /calendar|\bdiary\b|\bmeeting\b/,
-    lines: ['Checking your calendar.', 'Consulting the diary.'],
+    lines: ['Consultation de votre calendrier.', 'Consultation de l\'agenda.'],
   },
   {
     server: /elevenlabs|openai-tts/,
     tool: /speech|\bvoice\b|\btts\b|text_to_sound/,
-    lines: ['Synthesising.', 'Working on it, sir.'],
+    lines: ['Synthèse en cours.', 'Je m\'en occupe, Monsieur.'],
   },
   {
     server: /spotify|sonos/,
     tool: /\bplay\b|\bmusic\b|playlist|\btrack\b/,
-    lines: ['Queuing it up.', 'Putting it on.'],
+    lines: ['Mise en file d\'attente.', 'Je lance cela.'],
   },
   {
     server: /^home|homeassistant|\bhue\b|\bhass\b/,
     tool: /\blights?\b|thermostat|\bdimmer\b/,
-    lines: ['Adjusting it now.', 'Seeing to it, sir.'],
+    lines: ['Réglage en cours.', 'J\'y veille, Monsieur.'],
   },
   {
     server: /github|linear|jira|sentry/,
     tool: /\brepo\b|repository|\bissues?\b|pull_request|\bcommit\b/,
-    lines: ['Checking the repository.', 'Consulting the tracker.'],
+    lines: ['Vérification du dépôt.', 'Consultation du suivi.'],
   },
   // Also where the anonymously named analytics servers land — theirs are bare
   // UUIDs, so only the tool half says anything: Get-Report, Get-Events,
@@ -153,12 +153,12 @@ const BY_TOOL: Rule[] = [
   {
     server: /mixpanel|clarity|posthog|amplitude/,
     tool: /analytic|\bmetrics?\b|\breports?\b|\bevents?\b|cohort|funnel|dashboard|\bquery\b/,
-    lines: ['Running the query.', 'Pulling the figures.'],
+    lines: ['Exécution de la requête.', 'Extraction des chiffres.'],
   },
   {
     server: /\bexa\b|serper|serpapi|perplexity|tavily|brave/,
     tool: /search|\bweb\b|\bfetch\b|crawl|research/,
-    lines: ['Searching.', 'Consulting the record.'],
+    lines: ['Recherche.', 'Consultation des registres.'],
   },
 ]
 
